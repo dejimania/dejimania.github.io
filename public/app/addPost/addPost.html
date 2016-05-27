@@ -1,0 +1,190 @@
+<html lang="en">
+  <head>
+   
+    <title>Document Management Web App</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link href="blog.css" rel="stylesheet">
+
+    <script type="text/javascript" src="spin.min.js"></script>
+		 <script type="text/javascript" src="ladda.min.js"></script>
+		 <link rel="stylesheet" type="text/css" href="ladda-themeless.min.css">
+    
+  </head>
+
+  <body ng-controller="AddPostCtrl">
+
+     <!--
+    Upload form modal
+    ________________________________________________________________________-
+    -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Upload document</h4>
+                </div>
+                <div class="modal-body">
+                    
+<form action="" method="post"
+  class="form" enctype="multipart/form-data" role="form">
+  <div style="display:none;"><input id="csrf_token" name="csrf_token" type="hidden" value="1464268088##e5a8f380a460ddc09dbf57b01fc65daa2cd28526"><input id="uploader" name="uploader" type="hidden" value=""></div>
+  
+    
+    
+
+
+
+
+
+
+<div class="form-group  required"><label class="control-label" for="title">Document title</label>
+        
+          <input class="form-control" id="title" name="title" required type="text" placeholder="Please Type the document title here" value="">
+        
+  </div>
+
+
+    
+
+
+
+
+<div class="form-group "><label class="control-label" for="link">Link</label>
+        
+          <input class="form-control" id="link" name="link" type="text" placeholder="Links (e.g Google Drive, DropBox etc)" value="">
+        
+  </div>
+
+
+    
+
+
+
+
+
+
+<div class="form-group  required"><label class="control-label" for="keywords">Keywords</label>
+        
+          <input class="form-control" id="keywords" name="keywords" required type="text" placeholder="Add Keywords" value="">
+        
+  </div>
+
+
+    
+
+
+
+
+<div class="form-group "><label class="control-label" for="department">Department</label>
+        
+          <select class="form-control" id="department" name="department" placeholder="Select a Department"><option value="Success">Success</option><option value="Training">Training</option><option value="Operations">Operations</option><option value="Finance">Finance</option><option value="Recruitment">Recruitment</option><option value="Sales">Sales</option><option value="Marketing">Marketing</option></select>
+        
+  </div>
+
+
+    
+
+
+
+
+<div class="form-group "><label class="control-label" for="file_path">Your document</label>
+        
+          <input id="file_path" name="file_path" type="file">
+        
+  </div>
+
+
+
+    <input class="btn btn-default" id="submit" name="submit" type="submit" value="Upload">
+  
+</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    Navigation bar
+    ________________________________________________________________________-
+    -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/home">Document Management Track</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button id="modal_show" class="btn btn-default navbar-btn" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-upload"></span> Upload file</button>
+                    </li>
+                    
+                    <li><a href="/logout">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></a></li>
+                </ul>
+                </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid --></nav>
+
+<!-- Upload Document Container -->
+<div class="container-fluid">
+                    <div class="row well" id="custom_well">
+                        <h2>Type your search query below</h2>
+                        <div class="col-md-12">
+                            <form class="form-inline" role="form" id="yourformID-form" action="#" method="get">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Search</span>
+                                    <div class="form-group">
+                                        <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="form-control" type="submit">Go</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-10 well">
+                            <table class="table table-list-search" id="result_table">
+                                <thead class="tablehead_style">
+                                    <tr>
+                                        <th>Document Title</th>
+                                        <th>Document cloud Link</th>
+                                        <th>Document keywords</th>
+                                        <th>Document department</th>
+                                        <th>Document download link</th>
+                                        <th>Document uploader</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+            </div
+</div>
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+       <p>Document Management App</p>
+    
+    </div>
+   
+  </body>
+</html>
+
